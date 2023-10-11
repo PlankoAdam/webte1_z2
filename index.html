@@ -4,8 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    
+    <div class="main-form">
+        <form id="form">
+            <div class="form-element">
+                <label for="firstName">Meno</label>
+                <input type="text" id="firstName" name="firstName">
+            </div>
+            <div class="form-element">
+                <label for="lastName">Priezvisko</label>
+                <input type="text" id="lastName" name="lastName">
+            </div>
+            <div class="form-element">
+                <label for="gender">Pohlavie</label>
+                <div>
+                    <input type="radio" name="gender" id="male">
+                    <label for="male">Muz</label>
+                </div>
+                <div>
+                    <input type="radio" name="gender" id="female">
+                    <label for="female">Zena</label>
+                </div>
+            </div>
+            <div class="form-element">
+                <label for="date-of-birth">Datum narodenia</label>
+                <input type="date" id="date-of-birth" name="date-of-birth" onblur="validateDob()">
+            </div>
+            <div class="form-element">
+                <label for="age">Vek</label>
+                <input type="number" min="0" max="99" id="age" name="age" onblur="validateAge();">
+            </div>
+            <div class="form-element">
+                <button type="reset">Reset</button>
+            </div>
+            <div class="form-element">
+                <button type="submit">Hotovo</button>
+            </div>
+        </form>
+    </div>
 </body>
+<script src="./js/index.js"></script>
 </html>

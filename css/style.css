@@ -1,0 +1,52 @@
+:root{
+    --light: rgb(149, 201, 221);
+    --dark: rgb(46, 111, 155);
+}
+
+.main-form{
+    display: flex;
+    width: fit-content;
+    margin: auto;
+    padding: 3rem;
+    background-color: var(--light);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.37);
+}
+
+.form-element{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+
+.form-element label{
+    font-family: sans-serif;
+    margin-bottom: 0.5rem;
+}
+
+.form-element input{
+    padding: 5px;
+    margin-bottom: 0.5rem;
+    border-style: solid;
+    border-color: var(--dark);
+}
+
+.form-element input:focus{
+    border-color: white;
+}
+
+.form-element button{
+    margin: 0 1rem 0 1rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    background-color: var(--dark);
+    border: 0;
+    color: white;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.form-element button:hover{
+    background-color: white;
+    color: var(--dark);
+    transition: 0.3s;
+}
