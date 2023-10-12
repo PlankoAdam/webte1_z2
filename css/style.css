@@ -1,7 +1,9 @@
 :root{
     --bg: rgb(23, 46, 61);
     --light: rgb(186, 220, 233);
+    --mid: rgb(105, 182, 233);
     --dark: rgb(46, 111, 155);
+    --vdark: rgb(20, 55, 78);
     --error: rgb(247, 26, 56);
     --success: rgb(35, 187, 73);
 }
@@ -10,39 +12,43 @@ body{
     background-color: var(--bg);
 }
 
-.main-form{
+.form-window{
     display: flex;
-    width: fit-content;
+    width: 50%;
     margin: auto;
-    padding: 3rem;
+    padding: 3rem 1rem 3rem 1rem;
     background-color: var(--light);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.37);
+}
+
+.form-window form{
+    width: 100%;
+    display: flex;
 }
 
 .form-element{
     display: flex;
     flex-direction: column;
     margin: 1rem;
+    box-sizing: border-box;
 }
 
 .form-element label{
     font-family: sans-serif;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.1rem;
 }
 
 .form-element input{
     padding: 5px;
-    border-style: solid;
-    border-color: white;
+    border: 2px white solid;
 }
-/* 
-.form-element input:focus{
-    border-color: white;
-} */
 
 .form-element button{
-    margin: 0 1rem 0 1rem;
+    margin: 0 0 0 auto;
     padding: 0.5rem;
+    width: 50%;
+    max-width:15rem;
+    min-width: 5rem;
     border-radius: 1rem;
     background-color: var(--dark);
     border: 0;
@@ -61,17 +67,99 @@ body{
     font-style: italic;
 }
 
-.form-element .error{
+.error-text{
     font-family: monospace;
     font-size: small;
+    font-weight: bold;
     height: 1rem;
     color: var(--error);
 }
 
 .error input{
     border-color: var(--error);
+    transition: 0.3s;
 }
 
 .success input{
     border-color: var(--success);
+    transition: 0.3s;
+}
+
+.form-collumn{
+    color: var(--vdark);
+    width: 100%;
+}
+
+.dropdown{
+    position: relative;
+}
+
+.dropdown *{
+    box-sizing: border-box;
+}
+
+.select{
+    background-color: white;
+    color: var(--vdark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 2px var(--dark) solid; */
+    padding: 5px;
+    height: 30px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-family: monospace;
+}
+
+.select:hover{
+    background-color: var(--dark);
+    color: white;
+}
+
+.caret{
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid;
+    transition: 0.3s;
+}
+
+.caret-rotate{
+    transform: rotate(180deg);
+}
+
+.dropdown-menu{
+    list-style: none;
+    background-color: var(--dark);
+    color: white;
+    padding: 0;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    opacity: 0;
+    display: none;
+    transition: 0.2s;
+    z-index: 1;
+    font-family: monospace;
+}
+
+.dropdown-menu li{
+    padding: 0.5rem;
+    margin: 0.3rem 0;
+    cursor: pointer;
+}
+
+.dropdown-menu li:hover{
+    background-color: white;
+    color: var(--vdark);
+}
+
+.dropdown-menu-open{
+    opacity: 1;
+    display: block;
 }

@@ -1,9 +1,14 @@
 const form = document.getElementById('form');
+const fNameInput = document.getElementById('first-name');
+const lNameInput = document.getElementById('last-name');
 const dobInput = document.getElementById('date-of-birth');
 const ageInput = document.getElementById('age');
 
+const emptyFieldMessage = 'This field is required!'
+
 form.addEventListener('submit', e => {
     e.preventDefault();
+    validateForm();
 })
 
 form.addEventListener('reset', e => {
@@ -24,8 +29,44 @@ function getAge(dateString) {
     return age;
 }
 
+function validateFirstName(){
+    const fNameVal = fNameInput.value;
+    if(!fNameVal){
+        setError(fNameInput, emptyFieldMessage);
+        return;
+    }
+    setSuccess(fNameInput);
+}
+
+function validateLastName(){
+    const lNameVal = lNameInput.value;
+    if(!lNameVal){
+        setError(lNameInput, emptyFieldMessage);
+        return;
+    }
+    setSuccess(lNameInput);
+}
+
+function validateDob(){
+    const dobVal = dobInput.value;
+    if(!dobVal){
+        setError(dobInput, emptyFieldMessage);
+        return;
+    }
+
+    const ageVal = ageInput.value;
+    ageInput.value = getAge(dobVal);
+    setSuccess(dobInput);
+    setSuccess(ageInput);
+}
+
 function validateAge(){
     var ageVal = ageInput.value;
+    if(!ageVal){
+        setError(ageInput, emptyFieldMessage);
+        return;
+    }
+
     if(ageVal > 99) ageInput.value = 99;
     else if(ageVal < 0) ageInput.value = 0;
 
@@ -45,24 +86,16 @@ function validateAge(){
     }
 }
 
-function validateDob(){
-    const dobVal = dobInput.value;
-    const ageVal = ageInput.value;
-    if(ageVal == null || ageVal == '') ageInput.value = getAge(dobVal);
-    else if(ageVal != getAge(dobVal)){
-        const message = 'Error!';
-        setError(dobInput, message);
-        setError(ageInput, message);
-    }
-    else {
-        setSuccess(dobInput);
-        setSuccess(ageInput);
-    }
+function validateForm(){
+    validateFirstName();
+    validateLastName();
+    validateDob();
+    validateAge();
 }
 
 function setError(element, message){
     const formElement = element.parentElement;
-    const errorDisplay = formElement.querySelector('.error');
+    const errorDisplay = formElement.querySelector('.error-text');
 
     errorDisplay.innerText = message;
     formElement.classList.add('error');
@@ -71,7 +104,7 @@ function setError(element, message){
 
 function setSuccess(element){
     const formElement = element.parentElement;
-    const errorDisplay = formElement.querySelector('.error');
+    const errorDisplay = formElement.querySelector('.error-text');
 
     errorDisplay.innerText = '';
     formElement.classList.add('success');
@@ -82,6 +115,35 @@ function setDefault(element){
     element.classList.remove('error');
     element.classList.remove('success');
 
-    const errorDisplay = element.querySelector('.error');
+    const errorDisplay = element.querySelector('.error-text');
     if(errorDisplay != null) errorDisplay.innerText = '';
 }
+
+const dropdowns = document.querySelectorAll('.dropdown');
+
+dropdowns.forEach(dropdown => {
+    const select = dropdown.querySelector('.select');
+    const caret = dropdown.querySelector('.caret');
+    const menu = dropdown.querySelector('.dropdown-menu');
+    const options = dropdown.querySelectorAll('.dropdown-menu li');
+    const selected = dropdown.querySelector('.selected');
+
+    select.addEventListener('click', () => {
+        caret.classList.toggle('caret-rotate');
+        menu.classList.toggle('dropdown-menu-open');
+    });
+
+    options.forEach(option => {
+        option.addEventListener('click', () => {
+            selected.innerText = option.innerText;
+            caret.classList.remove('caret-rotate');
+            menu.classList.remove('dropdown-menu-open');
+
+            options.forEach(option => {
+                option.classList.remove('active');
+            });
+
+            option.classList.add('active');
+        });
+    });
+});
