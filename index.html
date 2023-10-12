@@ -19,22 +19,26 @@
             </div>
             <div class="form-element">
                 <label for="gender">Pohlavie</label>
-                <div>
-                    <input type="radio" name="gender" id="male">
-                    <label for="male">Muz</label>
-                </div>
-                <div>
-                    <input type="radio" name="gender" id="female">
-                    <label for="female">Zena</label>
+                <div class="radio-buttons">
+                    <div>
+                        <input type="radio" name="gender" id="male">
+                        <label for="male">Muz</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="gender" id="female">
+                        <label for="female">Zena</label>
+                    </div>
                 </div>
             </div>
             <div class="form-element">
                 <label for="date-of-birth">Datum narodenia</label>
-                <input type="date" id="date-of-birth" name="date-of-birth" onblur="validateDob()">
+                <input type="date" id="date-of-birth" name="date-of-birth" onblur="validateDob()" onchange="validateDob();">
+                <div class="error"></div>
             </div>
             <div class="form-element">
                 <label for="age">Vek</label>
-                <input type="number" min="0" max="99" id="age" name="age" onblur="validateAge();">
+                <input type="number" min="0" max="99" id="age" name="age" onblur="validateAge();" onchange="validateAge();">
+                <div class="error"></div>
             </div>
             <div class="form-element">
                 <button type="reset">Reset</button>

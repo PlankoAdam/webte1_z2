@@ -1,6 +1,13 @@
 :root{
-    --light: rgb(149, 201, 221);
+    --bg: rgb(23, 46, 61);
+    --light: rgb(186, 220, 233);
     --dark: rgb(46, 111, 155);
+    --error: rgb(247, 26, 56);
+    --success: rgb(35, 187, 73);
+}
+
+body{
+    background-color: var(--bg);
 }
 
 .main-form{
@@ -25,14 +32,13 @@
 
 .form-element input{
     padding: 5px;
-    margin-bottom: 0.5rem;
     border-style: solid;
-    border-color: var(--dark);
-}
-
-.form-element input:focus{
     border-color: white;
 }
+/* 
+.form-element input:focus{
+    border-color: white;
+} */
 
 .form-element button{
     margin: 0 1rem 0 1rem;
@@ -49,4 +55,23 @@
     background-color: white;
     color: var(--dark);
     transition: 0.3s;
+}
+
+.radio-buttons{
+    font-style: italic;
+}
+
+.form-element .error{
+    font-family: monospace;
+    font-size: small;
+    height: 1rem;
+    color: var(--error);
+}
+
+.error input{
+    border-color: var(--error);
+}
+
+.success input{
+    border-color: var(--success);
 }
