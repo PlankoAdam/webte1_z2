@@ -8,84 +8,137 @@
 </head>
 <body>
     <div class="form-window">
-        <form id="form">
-            <div class="form-collumn">
-                <div class="form-element">
-                    <label for="first-name">Meno</label>
-                    <input type="text" id="first-name" name="first-name" onblur="validateFirstName()" onchange="validateFirstName();">
-                    <div class="error-text"></div>
-                </div>
-                <div class="form-element">
-                    <label for="last-name">Priezvisko</label>
-                    <input type="text" id="last-name" name="last-name" onblur="validateLastName()" onchange="validateLastName();">
-                    <div class="error-text"></div>
-                </div>
-                <div class="form-element">
-                    <label for="gender">Pohlavie</label>
-                    <div class="radio-buttons">
-                        <div>
-                            <input type="radio" name="gender" id="male">
-                            <label for="male">Muz</label>
+        <form id="form" novalidate>
+            <div class="cols">
+                <div class="form-collumn">
+                    <div class="form-element">
+                        <label for="first-name">Meno <a id="f-name-len">0/20</a></label>
+                        <input type="text" maxlength="20" id="first-name" name="first-name" onblur="validateFirstName()" oninput="displayFirstNameLength()">
+                        <div class="error-text"></div>
+                    </div>
+                    <div class="form-element">
+                        <label for="last-name">Priezvisko <a id="l-name-len">0/20</a></label>
+                        <input type="text" maxlength="20" id="last-name" name="last-name" onblur="validateLastName()" oninput="displayLastNameLength()">
+                        <div class="error-text"></div>
+                    </div>
+                
+                    <div class="form-element">
+                        <label for="date-of-birth">Datum narodenia</label>
+                        <input type="date" id="date-of-birth" name="date-of-birth" onblur="validateDob()" onchange="validateDob()">
+                        <div class="error-text"></div>
+                    </div>
+                    <div class="form-element">
+                        <label for="age">Vek</label>
+                        <input type="number" min="0" max="99" id="age" name="age" onblur="validateAge()" onchange="validateAge()">
+                        <div class="error-text"></div>
+                    </div>
+                    <div class="form-element">
+                        <label for="gender">Pohlavie</label>
+                        <div class="radio-buttons">
+                            <div>
+                                <input type="radio" name="gender" id="male">
+                                <label for="male">Muz</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="gender" id="female">
+                                <label for="female">Zena</label>
+                            </div>
                         </div>
-                        <div>
-                            <input type="radio" name="gender" id="female">
-                            <label for="female">Zena</label>
+                        <div class="error-text"></div>
+                    </div>
+                </div>
+                <div class="form-collumn">
+                    <div class="form-element">
+                        <label for="email">E-mail adresa</label>
+                        <input type="email" id="email" name="email" onblur="validateEmail();">
+                        <div class="error-text"></div>
+                    </div>
+                    <div class="form-element">
+                        <label>Dropdown 1</label>
+                        <div class="dropdown">
+                            <div class="select">
+                                <span class="selected">asd1</span>
+                                <div class="caret"></div>
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li class="active">asd1</li>
+                                <li>asd2</li>
+                                <li>asd3</li>
+                                <li>asd4</li>
+                            </ul>
+                            <div class="error-text"></div>
                         </div>
                     </div>
-                    <div class="error-text"></div>
+                    <div class="form-element">
+                        <label>Dropdown 2</label>
+                        <div class="dropdown">
+                            <div class="select">
+                                <span class="selected">qwe1</span>
+                                <div class="caret"></div>
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li class="active">qwe1</li>
+                                <li>qwe2</li>
+                                <li>qwe3</li>
+                                <li>qwe4</li>
+                            </ul>
+                            <div class="error-text"></div>
+                        </div>
+                    </div>
+                    <div class="form-element">
+                        <label>Dropdown 3</label>
+                        <div class="dropdown">
+                            <div class="select">
+                                <span class="selected">zxc1</span>
+                                <div class="caret"></div>
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li class="active">zxc1</li>
+                                <li>zxc2</li>
+                                <li>zxc3</li>
+                                <li>zxc4</li>
+                            </ul>
+                            <div class="error-text"></div>
+                        </div>
+                    </div>
+                    <div class="form-element">
+                        <label>Checkbox</label>
+                        <div>
+                            <input type="checkbox" name="opt1" id="opt1">
+                            <label for="opt1">Option 1</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="opt2" id="opt2">
+                            <label for="opt2">Option 2</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="opt3" id="opt3">
+                            <label for="opt3">Option 3</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="opt-other" id="opt-other">
+                            <label for="opt-other">Option other</label>
+                            <input type="text" id="opt-other-txtbox">
+                        </div>
+                    </div>
                 </div>
-                <div class="form-element">
-                    <label for="date-of-birth">Datum narodenia</label>
-                    <input type="date" id="date-of-birth" name="date-of-birth" onblur="validateDob()" onchange="validateDob();">
-                    <div class="error-text"></div>
+                <div class="form-collumn">
+                    <div class="form-element">
+                        <label for="sel1">Select 1</label>
+                        <select name="sel1" id="sel1">
+                            <option value="o1">Opt1</option>
+                            <option value="o2">Opt2</option>
+                            <option value="o3">Opt3</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="form-element">
-                    <label for="age">Vek</label>
-                    <input type="number" min="0" max="99" id="age" name="age" onblur="validateAge();" onchange="validateAge();">
-                    <div class="error-text"></div>
-                </div>
+            </div>
+            <div>
                 <div class="form-element">
                     <button type="reset">Reset</button>
                 </div>
                 <div class="form-element">
                     <button type="submit">Hotovo</button>
-                </div>
-            </div>
-            <div class="form-collumn">
-                <div class="form-element">
-                    <label for="email">E-mail adresa</label>
-                    <input type="email" id="email" name="email">
-                    <div class="error-text"></div>
-                </div>
-                <div class="form-element">
-                    <label>Dropdown 1</label>
-                    <div class="dropdown">
-                        <div class="select">
-                            <span class="selected">asd1</span>
-                            <div class="caret"></div>
-                        </div>
-                        <ul class="dropdown-menu">
-                            <li class="active">asd1</li>
-                            <li>asd2</li>
-                            <li>asd3</li>
-                            <li>asd4</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="form-element">
-                    <label>Dropdown 2</label>
-                    <div class="dropdown">
-                        <div class="select">
-                            <span class="selected">sdfghwtrhhwthh</span>
-                            <div class="caret"></div>
-                        </div>
-                        <ul class="dropdown-menu">
-                            <li class="active">sdfghwtrhhwthh</li>
-                            <li>asgregwerg</li>
-                            <li>dbtyreghb</li>
-                            <li>sdtjhwrthj</li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </form>

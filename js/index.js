@@ -3,6 +3,10 @@ const fNameInput = document.getElementById('first-name');
 const lNameInput = document.getElementById('last-name');
 const dobInput = document.getElementById('date-of-birth');
 const ageInput = document.getElementById('age');
+const emailInput = document.getElementById('email');
+
+const fNameLenDisplay = document.getElementById('f-name-len');
+const lNameLenDisplay = document.getElementById('l-name-len');
 
 const emptyFieldMessage = 'This field is required!'
 
@@ -38,6 +42,10 @@ function validateFirstName(){
     setSuccess(fNameInput);
 }
 
+function displayFirstNameLength(){
+    fNameLenDisplay.innerText = fNameInput.value.length + '/20';
+}
+
 function validateLastName(){
     const lNameVal = lNameInput.value;
     if(!lNameVal){
@@ -45,6 +53,10 @@ function validateLastName(){
         return;
     }
     setSuccess(lNameInput);
+}
+
+function displayLastNameLength(){
+    lNameLenDisplay.innerText = lNameInput.value.length + '/20';
 }
 
 function validateDob(){
@@ -86,11 +98,27 @@ function validateAge(){
     }
 }
 
+function validateEmail(){
+    var emailVal = emailInput.value;
+    if(!emailVal){
+        setError(emailInput, emptyFieldMessage);
+        return;
+    }
+
+    let regex = /^[a-z]{3,20}@[a-z]{1,}.[a-z]{2,4}$/i;
+    if(!regex.test(emailVal)){
+        setError(emailInput, 'Not a valid e-mail!');
+    } else {
+        setSuccess(emailInput);
+    }
+}
+
 function validateForm(){
     validateFirstName();
     validateLastName();
     validateDob();
     validateAge();
+    validateEmail();
 }
 
 function setError(element, message){
