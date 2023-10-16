@@ -1,3 +1,4 @@
+
 const form = document.getElementById('form');
 const fNameInput = document.getElementById('first-name');
 const lNameInput = document.getElementById('last-name');
@@ -8,7 +9,17 @@ const emailInput = document.getElementById('email');
 const fNameLenDisplay = document.getElementById('f-name-len');
 const lNameLenDisplay = document.getElementById('l-name-len');
 
-const emptyFieldMessage = 'This field is required!'
+const emptyFieldMessage = 'This field is required!';
+
+// for(cat in data.categories){
+//     for(subCat in cat){
+//         for(prod in subCat){
+//             console.log(prod);
+//         }
+//     }
+// }
+
+console.log(categories);
 
 form.addEventListener('submit', e => {
     e.preventDefault();

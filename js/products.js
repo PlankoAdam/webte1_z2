@@ -1,0 +1,95 @@
+const categories = [
+    {
+        name:"Speakers",
+        subCategories:[
+            {
+                name:"Bookshelf",
+                products:[
+                    {
+                        name:"asdf",
+                        price:100.0
+                    },
+                    {
+                        name:"sexy narkoman",
+                        price:69.0
+                    }
+                ]
+            },
+            {
+                name:"Standing",
+                products:[
+                    {
+                        name:"ganacci",
+                        price:420.0
+                    },
+                    {
+                        name:"salvatore",
+                        price:690.0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        name:"Headphones",
+        subCategories:[
+            {
+                name:"Closed-back",
+                products:[
+                    {
+                        name:"qwqwert",
+                        price:100.0
+                    },
+                    {
+                        name:"DT770 PRO",
+                        price:69.0
+                    }
+                ]
+            },
+            {
+                name:"Open-back",
+                products:[
+                    {
+                        name:"HD600",
+                        price:420.0
+                    },
+                    {
+                        name:"X2HR",
+                        price:690.0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        name:"Earphones",
+        subCategories:[
+            {
+                name:"Wired",
+                products:[
+                    {
+                        name:"Moondrop Chu",
+                        price:100.0
+                    },
+                    {
+                        name:"Salnotes Zero",
+                        price:69.0
+                    }
+                ]
+            },
+            {
+                name:"Wireless",
+                products:[
+                    {
+                        name:"AirPods Pro",
+                        price:420.0
+                    },
+                    {
+                        name:"AKG N400",
+                        price:690.0
+                    }
+                ]
+            }
+        ]
+    }
+];
