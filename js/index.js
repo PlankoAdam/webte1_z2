@@ -9,17 +9,14 @@ const emailInput = document.getElementById('email');
 const fNameLenDisplay = document.getElementById('f-name-len');
 const lNameLenDisplay = document.getElementById('l-name-len');
 
+const selCat = document.getElementById('sel-cat');
+const selSubCat = document.getElementById('sel-sub-cat');
+const selModel = document.getElementById('sel-model');
+const totalLabel = document.getElementById('total-label');
+let total = 0;
+
 const emptyFieldMessage = 'This field is required!';
 
-// for(cat in data.categories){
-//     for(subCat in cat){
-//         for(prod in subCat){
-//             console.log(prod);
-//         }
-//     }
-// }
-
-console.log(categories);
 
 form.addEventListener('submit', e => {
     e.preventDefault();
@@ -158,31 +155,68 @@ function setDefault(element){
     if(errorDisplay != null) errorDisplay.innerText = '';
 }
 
-const dropdowns = document.querySelectorAll('.dropdown');
-
-dropdowns.forEach(dropdown => {
-    const select = dropdown.querySelector('.select');
-    const caret = dropdown.querySelector('.caret');
-    const menu = dropdown.querySelector('.dropdown-menu');
-    const options = dropdown.querySelectorAll('.dropdown-menu li');
-    const selected = dropdown.querySelector('.selected');
-
-    select.addEventListener('click', () => {
-        caret.classList.toggle('caret-rotate');
-        menu.classList.toggle('dropdown-menu-open');
+function selInit(){
+    console.log(categories);
+    categories.forEach((cat) => {
+        selCat.add(new Option(cat.name, cat.name));
     });
+}
 
-    options.forEach(option => {
-        option.addEventListener('click', () => {
-            selected.innerText = option.innerText;
-            caret.classList.remove('caret-rotate');
-            menu.classList.remove('dropdown-menu-open');
-
-            options.forEach(option => {
-                option.classList.remove('active');
-            });
-
-            option.classList.add('active');
+function updateSelSubCat(){
+    removeOptions(selModel);
+    removeOptions(selSubCat);
+    if(getCurrentCat() != null){
+        getCurrentCat().subCategories.forEach(item => {
+            selSubCat.add(new Option(item.name, item.name));
         });
-    });
-});
+    }
+    updateSelModel();
+}
+
+function updateSelModel(){
+    removeOptions(selModel);
+    if(getCurrentSubCat() != null){
+        getCurrentSubCat().products.forEach(item => {
+            selModel.add(new Option(item.name, item.name));
+        });
+    }
+}
+
+function updateTotal(){
+    if(selModel.value == 'choose'){
+        selectedModel = null;
+        total = 0;
+    }else{
+        const selectedModel = getCurrentSubCat().products.filter(obj => {
+            return obj.name == selModel.value;
+        })[0];
+        total = selectedModel.price;
+    }
+
+    console.log(selectedModel);
+    totalLabel.innerHTML = "Total: " + total;
+}
+
+function getCurrentCat(){
+    if(selCat.value == 'choose') return null;
+    return categories.filter(obj => {
+        return obj.name == selCat.value;
+    })[0];
+}
+
+function getCurrentSubCat(){
+    if(selSubCat.value == 'choose') return null;
+    return getCurrentCat().subCategories.filter(obj => {
+        return obj.name == selSubCat.value;
+    })[0];
+}
+
+function removeOptions(selObj){
+    for(opt in selObj.options){
+        selObj.remove(opt);
+    }
+    selObj.add(new Option("Choose one", 'choose'));
+    updateTotal();
+}
+
+selInit();

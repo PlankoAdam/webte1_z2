@@ -47,6 +47,7 @@ body{
     flex-direction: column;
     margin: 1rem;
     box-sizing: border-box;
+    min-height: 4.5em;
 }
 
 .form-element label{
@@ -59,7 +60,18 @@ body{
     border: 2px white solid;
 }
 
-.form-element button{
+.form-element input[type="radio"]{
+    accent-color: var(--dark);
+}
+
+.btn{
+    display: flex;
+    justify-content: end;
+    margin: 1rem;
+    box-sizing: border-box;
+}
+
+.btn button{
     margin: 0 0 0 auto;
     padding: 0.5rem;
     width: 50%;
@@ -99,79 +111,6 @@ body{
 .success input{
     border-color: var(--success);
     transition: 0.3s;
-}
-
-
-.dropdown{
-    position: relative;
-}
-
-.dropdown *{
-    box-sizing: border-box;
-}
-
-.select{
-    background-color: white;
-    color: var(--vdark);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-    height: 30px;
-    cursor: pointer;
-    font-family: monospace;
-}
-
-.select:hover{
-    background-color: var(--dark);
-    color: white;
-}
-
-.caret{
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 6px solid;
-    transition: 0.3s;
-}
-
-.caret-rotate{
-    transform: rotate(180deg);
-}
-
-.dropdown-menu{
-    list-style: none;
-    background-color: var(--dark);
-    color: white;
-    padding: 0;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-    position: absolute;
-    top: 1rem;
-    left: 50%;
-    width: 100%;
-    transform: translateX(-50%);
-    opacity: 0;
-    display: none;
-    transition: 0.2s;
-    z-index: 1;
-    font-family: monospace;
-}
-
-.dropdown-menu li{
-    padding: 0.5rem;
-    margin: 0.3rem 0;
-    cursor: pointer;
-}
-
-.dropdown-menu li:hover{
-    background-color: white;
-    color: var(--vdark);
-}
-
-.dropdown-menu-open{
-    opacity: 1;
-    display: block;
 }
 
 #opt-other-txtbox{
