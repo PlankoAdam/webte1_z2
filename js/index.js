@@ -1,4 +1,6 @@
 
+let formIsValid = true;
+
 const form = document.getElementById('form');
 const fNameInput = document.getElementById('first-name');
 const lNameInput = document.getElementById('last-name');
@@ -56,7 +58,7 @@ form.addEventListener('reset', e => resetForm());
 
 function resetForm(){
     var formElements = document.getElementsByClassName('form-element');
-    for(var i = 0; i < formElements.length; i++){
+    for(let i = 0; i < formElements.length; i++){
         setDefault(formElements[i]);
     }
     resetSelects();
@@ -68,6 +70,7 @@ function resetForm(){
     displayFirstNameLength();
     lNameInput.value = '';
     displayLastNameLength();
+    formIsValid = true;
 }
 
 function getAge(dateString) {
@@ -81,93 +84,16 @@ function getAge(dateString) {
     return age;
 }
 
-function validateFirstName(){
-    const fNameVal = fNameInput.value;
-    if(!fNameVal){
-        setError(fNameInput, emptyFieldMessage);
-        return;
-    }
-    setSuccess(fNameInput);
-}
-
 function displayFirstNameLength(){
     fNameLenDisplay.innerText = fNameInput.value.length + '/20';
-}
-
-function validateLastName(){
-    const lNameVal = lNameInput.value;
-    if(!lNameVal){
-        setError(lNameInput, emptyFieldMessage);
-        return;
-    }
-    setSuccess(lNameInput);
 }
 
 function displayLastNameLength(){
     lNameLenDisplay.innerText = lNameInput.value.length + '/20';
 }
 
-function validateDob(){
-    const dobVal = dobInput.value;
-    if(!dobVal){
-        setError(dobInput, emptyFieldMessage);
-        return;
-    }
-
-    const ageVal = ageInput.value;
-    ageInput.value = getAge(dobVal);
-    setSuccess(dobInput);
-    setSuccess(ageInput);
-}
-
-function validateAge(){
-    var ageVal = ageInput.value;
-    if(!ageVal){
-        setError(ageInput, emptyFieldMessage);
-        return;
-    }
-
-    if(ageVal > 99) ageInput.value = 99;
-    else if(ageVal < 0) ageInput.value = 0;
-
-    ageVal = ageInput.value;
-    if(ageVal == null || ageVal == '') return;
-    if(!dobInput.value){
-        setError(dobInput, emptyFieldMessage);
-    }
-    else if(ageVal != getAge(dobInput.value)){
-        const message = 'Dátum narodenia a vek nezhodujú!';
-        setError(dobInput, message);
-        setError(ageInput, message);
-    }
-    else{
-        setSuccess(dobInput);
-        setSuccess(ageInput);
-    }
-}
-
-function validateEmail(){
-    var emailVal = emailInput.value;
-    if(!emailVal){
-        setError(emailInput, emptyFieldMessage);
-        return;
-    }
-
-    const regex1 = /^[A-Za-z0-9!#$%&'*+\/=?^_`{|}~-]+(\.[A-Za-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@([a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z]{2,4}$/i;
-    const regex2 = /^.{3,}@.*$/i;
-    if(regex1.test(emailVal) & regex2.test(emailVal)){
-        setSuccess(emailInput);
-    } else {
-        setError(emailInput, 'Nevalidný formát!');
-    }
-}
-
-function validateForm(){
-    validateFirstName();
-    validateLastName();
-    validateDob();
-    validateAge();
-    validateEmail();
+function sendForm(){
+    console.log('valid form');
 }
 
 function setError(element, message){
@@ -196,90 +122,14 @@ function setDefault(element){
     if(errorDisplay != null) errorDisplay.innerText = '';
 }
 
-function selInit(){
-    categories.forEach((cat) => {
-        selCat.add(new Option(cat.name, cat.name));
-    });
-}
-
-function updateSelSubCat(){
-    removeOptions(selModel);
-    removeOptions(selSubCat);
-    if(getCurrentCat() != null){
-        getCurrentCat().subCategories.forEach(item => {
-            selSubCat.add(new Option(item.name, item.name));
-        });
-    }
-    updateSelModel();
-}
-
-function updateSelModel(){
-    removeOptions(selModel);
-    if(getCurrentSubCat() != null){
-        getCurrentSubCat().products.forEach(item => {
-            selModel.add(new Option(item.name, item.name));
-        });
-    }
-}
-
-function updateTotal(){
-    if(selModel.value == 'choose'){
-        selectedModel = null;
-        total = 0;
-    }else{
-        const selectedModel = getCurrentSubCat().products.filter(obj => {
-            return obj.name == selModel.value;
-        })[0];
-        total = selectedModel.price;
-    }
-
-    for(i = 0; i < checkboxes.length; i++){
-        if(checkboxes[i].element.checked){
-            total += checkboxes[i].price;
-        }
-    }
-
-    console.log(selectedModel);
-    totalLabel.innerHTML = "Spolu: " + total;
-}
-
-function getCurrentCat(){
-    if(selCat.value == 'choose') return null;
-    return categories.filter(obj => {
-        return obj.name == selCat.value;
-    })[0];
-}
-
-function getCurrentSubCat(){
-    if(selSubCat.value == 'choose') return null;
-    return getCurrentCat().subCategories.filter(obj => {
-        return obj.name == selSubCat.value;
-    })[0];
-}
-
-function removeOptions(selObj){
-    for(opt in selObj.options){
-        selObj.remove(opt);
-    }
-    selObj.add(new Option("Vyberte", 'choose'));
-    updateTotal();
-}
-
-function resetSelects(){
-    removeOptions(selModel);
-    removeOptions(selSubCat);
-    removeOptions(selCat);
-    selInit();
-}
-
 function checkboxesInit(){
-    for(i = 0; i < checkboxes.length; i++){
+    for(let i = 0; i < checkboxes.length; i++){
         checkboxes[i].label.innerHTML = checkboxes[i].name;
     }
 }
 
 function resetCheckboxes(){
-    for(i = 0; i < checkboxes.length; i++){
+    for(let i = 0; i < checkboxes.length; i++){
         checkboxes[i].element.checked = false;
     }
     toggleOtherInput();
