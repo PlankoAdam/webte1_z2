@@ -13,6 +13,33 @@ const selCat = document.getElementById('sel-cat');
 const selSubCat = document.getElementById('sel-sub-cat');
 const selModel = document.getElementById('sel-model');
 const totalLabel = document.getElementById('total-label');
+const checkboxes = [
+    {
+        element: document.getElementById('opt1'),
+        label: document.getElementById('l-opt1'),
+        name:"+3 roky záruka",
+        price:30
+    },
+    {
+        element: document.getElementById('opt2'),
+        label: document.getElementById('l-opt2'),
+        name:"Okamžitá výmena",
+        price:15
+    },
+    {
+        element: document.getElementById('opt3'),
+        label: document.getElementById('l-opt3'),
+        name:"Poistenie zásielky",
+        price:10
+    },
+    {
+        element: document.getElementById('opt-other'),
+        label: document.getElementById('l-opt-other'),
+        name:"Poznámka pre kuriéra",
+        price:0
+    }
+];
+const otherCheckboxInput = document.getElementById('opt-other-txtbox');
 let total = 0;
 
 const emptyFieldMessage = 'This field is required!';
@@ -23,12 +50,17 @@ form.addEventListener('submit', e => {
     validateForm();
 })
 
-form.addEventListener('reset', e => {
+form.addEventListener('reset', e => resetForm());
+
+function resetForm(){
     var formElements = document.getElementsByClassName('form-element');
     for(var i = 0; i < formElements.length; i++){
         setDefault(formElements[i]);
     }
-})
+    resetSelects();
+    resetCheckboxes();
+    updateTotal();
+}
 
 function getAge(dateString) {
     var today = new Date();
@@ -156,7 +188,6 @@ function setDefault(element){
 }
 
 function selInit(){
-    console.log(categories);
     categories.forEach((cat) => {
         selCat.add(new Option(cat.name, cat.name));
     });
@@ -193,6 +224,12 @@ function updateTotal(){
         total = selectedModel.price;
     }
 
+    for(i = 0; i < checkboxes.length; i++){
+        if(checkboxes[i].element.checked){
+            total += checkboxes[i].price;
+        }
+    }
+
     console.log(selectedModel);
     totalLabel.innerHTML = "Total: " + total;
 }
@@ -219,4 +256,31 @@ function removeOptions(selObj){
     updateTotal();
 }
 
-selInit();
+function resetSelects(){
+    removeOptions(selModel);
+    removeOptions(selSubCat);
+    removeOptions(selCat);
+    selInit();
+}
+
+function checkboxesInit(){
+    for(i = 0; i < checkboxes.length; i++){
+        checkboxes[i].label.innerHTML = checkboxes[i].name;
+    }
+}
+
+function resetCheckboxes(){
+    for(i = 0; i < checkboxes.length; i++){
+        checkboxes[i].element.checked = false;
+    }
+    toggleOtherInput();
+}
+
+function toggleOtherInput(){
+    const otherCheckbox = document.getElementById('opt-other');
+    if(otherCheckbox.checked) otherCheckboxInput.style.display = 'block';
+    else otherCheckboxInput.style.display = 'none';
+}
+
+checkboxesInit();
+resetForm();
