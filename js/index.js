@@ -9,6 +9,8 @@ const emailInput = document.getElementById('email');
 const fNameLenDisplay = document.getElementById('f-name-len');
 const lNameLenDisplay = document.getElementById('l-name-len');
 
+const otherGenderInput = document.getElementById('other-gender-input');
+
 const selCat = document.getElementById('sel-cat');
 const selSubCat = document.getElementById('sel-sub-cat');
 const selModel = document.getElementById('sel-model');
@@ -60,6 +62,12 @@ function resetForm(){
     resetSelects();
     resetCheckboxes();
     updateTotal();
+    document.getElementById('other-gender').checked = false;
+    toggleOtherGenderInput();
+    fNameInput.value = '';
+    displayFirstNameLength();
+    lNameInput.value = '';
+    displayLastNameLength();
 }
 
 function getAge(dateString) {
@@ -280,6 +288,12 @@ function toggleOtherInput(){
     const otherCheckbox = document.getElementById('opt-other');
     if(otherCheckbox.checked) otherCheckboxInput.style.display = 'block';
     else otherCheckboxInput.style.display = 'none';
+}
+
+function toggleOtherGenderInput(){
+    const otherGenderRadio = document.getElementById('other-gender');
+    if(otherGenderRadio.checked) otherGenderInput.style.display = 'block';
+    else otherGenderInput.style.display = 'none';
 }
 
 checkboxesInit();
