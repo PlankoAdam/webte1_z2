@@ -25,7 +25,7 @@
                     </div>
                 
                     <div class="form-element">
-                        <label for="date-of-birth">Datum narodenia</label>
+                        <label for="date-of-birth">Dátum narodenia</label>
                         <input type="date" id="date-of-birth" name="date-of-birth" onblur="validateDob()" onchange="validateDob()">
                         <div class="error-text"></div>
                     </div>
@@ -47,11 +47,11 @@
                         <div class="radio-buttons">
                             <div class="radio-item">
                                 <input type="radio" name="gender" id="male" onchange="toggleOtherGenderInput();">
-                                <label for="male">Muz</label>
+                                <label for="male">Muž</label>
                             </div>
                             <div class="radio-item">
                                 <input type="radio" name="gender" id="female" onchange="toggleOtherGenderInput();">
-                                <label for="female">Zena</label>
+                                <label for="female">Žena</label>
                             </div>
                             <div class="radio-item">
                                 <input type="radio" name="gender" id="other-gender" onchange="toggleOtherGenderInput();">
@@ -65,21 +65,21 @@
                 <div class="form-collumn">
                     <div>
                         <div class="form-element">
-                            <label for="sel-cat">Category</label>
+                            <label for="sel-cat">Kategória</label>
                             <select name="sel-cat" id="sel-cat" onchange="updateSelSubCat();">
-                                <option value="choose">Choose one</option>
+                                <option value="choose">Vyberte</option>
                             </select>
                         </div>
                         <div class="form-element">
-                            <label for="sel-sub-cat">Sub-category</label>
+                            <label for="sel-sub-cat">Typ</label>
                             <select name="sel-sub-cat" id="sel-sub-cat" onchange="updateSelModel();">
-                                <option value="choose">Choose one</option>
+                                <option value="choose">Vyberte</option>
                             </select>
                         </div>
                         <div class="form-element">
                             <label for="sel-model">Model</label>
                             <select name="sel-model" id="sel-model" onchange="updateTotal();">
-                                <option value="choose">Choose one</option>
+                                <option value="choose">Vyberte</option>
                             </select>
                         </div>
                     </div>

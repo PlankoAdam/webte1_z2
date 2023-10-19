@@ -44,7 +44,7 @@ const checkboxes = [
 const otherCheckboxInput = document.getElementById('opt-other-txtbox');
 let total = 0;
 
-const emptyFieldMessage = 'This field is required!';
+const emptyFieldMessage = 'Prosím, vyplňte políčko!';
 
 
 form.addEventListener('submit', e => {
@@ -133,10 +133,10 @@ function validateAge(){
     ageVal = ageInput.value;
     if(ageVal == null || ageVal == '') return;
     if(!dobInput.value){
-        setError(dobInput, 'Errooooo');
+        setError(dobInput, emptyFieldMessage);
     }
     else if(ageVal != getAge(dobInput.value)){
-        const message = 'Error!';
+        const message = 'Dátum narodenia a vek nezhodujú!';
         setError(dobInput, message);
         setError(ageInput, message);
     }
@@ -153,11 +153,12 @@ function validateEmail(){
         return;
     }
 
-    let regex = /^[a-z]{3,20}@[a-z]{1,}.[a-z]{2,4}$/i;
-    if(!regex.test(emailVal)){
-        setError(emailInput, 'Not a valid e-mail!');
-    } else {
+    const regex1 = /^[A-Za-z0-9!#$%&'*+\/=?^_`{|}~-]+(\.[A-Za-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@([a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z]{2,4}$/i;
+    const regex2 = /^.{3,}@.*$/i;
+    if(regex1.test(emailVal) & regex2.test(emailVal)){
         setSuccess(emailInput);
+    } else {
+        setError(emailInput, 'Nevalidný formát!');
     }
 }
 
@@ -239,7 +240,7 @@ function updateTotal(){
     }
 
     console.log(selectedModel);
-    totalLabel.innerHTML = "Total: " + total;
+    totalLabel.innerHTML = "Spolu: " + total;
 }
 
 function getCurrentCat(){
@@ -260,7 +261,7 @@ function removeOptions(selObj){
     for(opt in selObj.options){
         selObj.remove(opt);
     }
-    selObj.add(new Option("Choose one", 'choose'));
+    selObj.add(new Option("Vyberte", 'choose'));
     updateTotal();
 }
 
