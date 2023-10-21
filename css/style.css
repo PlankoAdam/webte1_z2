@@ -8,6 +8,13 @@
     --success: rgb(35, 187, 73);
 }
 
+html {
+    box-sizing: border-box;
+}
+    *, *:before, *:after {
+    box-sizing: inherit;
+}
+
 body{
     background-color: var(--bg);
 }
@@ -65,6 +72,20 @@ body{
 .form-element input{
     padding: 5px;
     border: 2px white solid;
+}
+
+.form-element input[type="text"], input[type="date"], input[type="email"], input[type="number"], select{
+    height: 2rem;
+}
+
+#tel{
+    display: flex;
+    width: 100%;
+}
+
+#tel input{
+    margin-left: 0.5rem;
+    width: 100%;
 }
 
 input[type="radio"]{

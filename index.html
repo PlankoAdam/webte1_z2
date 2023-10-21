@@ -14,31 +14,44 @@
 
                     <div class="form-element">
                         <label for="first-name">Meno <a id="f-name-len">0/20</a></label>
-                        <input type="text" maxlength="20" id="first-name" name="first-name" onblur="validateFirstName()" oninput="displayFirstNameLength()">
+                        <input type="text" maxlength="20" id="first-name" name="first-name">
                         <div class="error-text"></div>
                     </div>
 
                     <div class="form-element">
                         <label for="last-name">Priezvisko <a id="l-name-len">0/20</a></label>
-                        <input type="text" maxlength="20" id="last-name" name="last-name" onblur="validateLastName()" oninput="displayLastNameLength()">
+                        <input type="text" maxlength="20" id="last-name" name="last-name">
                         <div class="error-text"></div>
                     </div>
                 
                     <div class="form-element">
                         <label for="date-of-birth">Dátum narodenia</label>
-                        <input type="date" id="date-of-birth" name="date-of-birth" onblur="validateDob()" onchange="validateDob()">
+                        <input type="date" id="date-of-birth" name="date-of-birth">
                         <div class="error-text"></div>
                     </div>
 
                     <div class="form-element">
                         <label for="age">Vek</label>
-                        <input type="number" min="0" max="99" id="age" name="age" onblur="validateAge()" onchange="validateAge()">
+                        <input type="number" min="0" max="99" id="age" name="age" onkeypress="return onlyNumberKey(event)">
                         <div class="error-text"></div>
                     </div>
 
                     <div class="form-element">
                         <label for="email">E-mail adresa</label>
-                        <input type="email" id="email" name="email" onblur="validateEmail();">
+                        <input type="email" id="email" name="email">
+                        <div class="error-text"></div>
+                    </div>
+
+                    <div class="form-element">
+                        <label for="tel">Telefónne číslo</label>
+                        <div id="tel">
+                            <select name="sel-country-code" id="sel-country-code">
+                                <option value="+421">🇸🇰 +421</option>
+                                <option value="+420">🇨🇿 +420</option>
+                                <option value="+36">🇭🇺 +36</option>
+                            </select>
+                            <input type="text" maxlength="15" id="local-number-input" name="local-number-input" onkeypress="return onlyNumberKey(event)">
+                        </div>
                         <div class="error-text"></div>
                     </div>
 
@@ -46,19 +59,19 @@
                         <label for="gender">Pohlavie</label>
                         <div class="radio-buttons" id="gender-selector">
                             <div class="radio-item">
-                                <input type="radio" name="gender" id="male" onchange="toggleOtherGenderInput(); validateGender();">
+                                <input type="radio" name="gender" id="male">
                                 <label for="male">Muž</label>
                             </div>
                             <div class="radio-item">
-                                <input type="radio" name="gender" id="female" onchange="toggleOtherGenderInput(); validateGender();">
+                                <input type="radio" name="gender" id="female">
                                 <label for="female">Žena</label>
                             </div>
                             <div class="radio-item">
-                                <input type="radio" name="gender" id="other-gender" onchange="toggleOtherGenderInput(); validateGender();">
+                                <input type="radio" name="gender" id="other-gender">
                                 <label for="other-gender">Iné</label>
                             </div>
                         </div>
-                        <input type="text" id="other-gender-input" onblur="validateGender();">
+                        <input type="text" id="other-gender-input">
                         <div class="error-text"></div>
                     </div>
                 </div>
@@ -66,19 +79,19 @@
                     <div>
                         <div class="form-element">
                             <label for="sel-cat">Kategória</label>
-                            <select name="sel-cat" id="sel-cat" onchange="updateSelSubCat();">
+                            <select name="sel-cat" id="sel-cat">
                                 <option value="choose">Vyberte</option>
                             </select>
                         </div>
                         <div class="form-element">
                             <label for="sel-sub-cat">Typ</label>
-                            <select name="sel-sub-cat" id="sel-sub-cat" onchange="updateSelModel();">
+                            <select name="sel-sub-cat" id="sel-sub-cat">
                                 <option value="choose">Vyberte</option>
                             </select>
                         </div>
                         <div class="form-element">
                             <label for="sel-model">Model</label>
-                            <select name="sel-model" id="sel-model" onchange="updateTotal();">
+                            <select name="sel-model" id="sel-model">
                                 <option value="choose">Vyberte</option>
                             </select>
                         </div>
@@ -87,19 +100,19 @@
                     <div class="form-element">
                         <label>Checkbox</label>
                         <div class="checkbox-item">
-                            <input type="checkbox" name="opt1" id="opt1" onchange="updateTotal();">
+                            <input type="checkbox" name="extra" id="opt1">
                             <label for="opt1" id="l-opt1">Option 1</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" name="opt2" id="opt2" onchange="updateTotal();">
+                            <input type="checkbox" name="extra" id="opt2">
                             <label for="opt2" id="l-opt2">Option 2</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" name="opt3" id="opt3" onchange="updateTotal();">
+                            <input type="checkbox" name="extra" id="opt3">
                             <label for="opt3" id="l-opt3">Option 3</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" name="opt-other" id="opt-other" onchange="updateTotal(); toggleOtherInput();">
+                            <input type="checkbox" name="extra" id="opt-other">
                             <label for="opt-other" id="l-opt-other">Option other</label>
                         </div>
                         <input type="text" id="opt-other-txtbox">
@@ -121,8 +134,13 @@
         </form>
     </div>
 </body>
-<script type="text/javascript" src="./js/products.js"></script>
-<script type="text/javascript" src="./js/validations.js"></script>
-<script type="text/javascript" src="./js/selects.js"></script>
-<script type="text/javascript" src="./js/index.js"></script>
+<script type="module" src="./js/index.js"></script>
+<script>
+    function onlyNumberKey(evt) {
+    let ASCIICode = (evt.which) ? evt.which : evt.keyCode
+    if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+        return false;
+    return true;
+    }
+</script>
 </html>
