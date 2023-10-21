@@ -1,6 +1,6 @@
 import { emptyFieldMessage, setError, setSuccess} from "../util.js";
 
-export {validate, reset};
+export { validate, reset };
 
 const lNameInput = document.getElementById('last-name');
 const lNameLenDisplay = document.getElementById('l-name-len');

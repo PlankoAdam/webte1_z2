@@ -1,4 +1,6 @@
-export {getSubTotal, reset};
+import { setDefault, setError } from "../util.js";
+
+export { validate, getSubTotal, reset, getCurrentModel };
 
 const categories = [
     {
@@ -102,7 +104,17 @@ const selModel = document.getElementById('sel-model');
 
 selCat.addEventListener('change', updateSelSubCat);
 selSubCat.addEventListener('change', updateSelModel);
+selModel.addEventListener('change', validate);
 selInit();
+
+function validate(){
+    if(getCurrentModel() == null){
+        setError(selModel, 'Vyberte si produkt!');
+        return false;
+    }
+    setDefault(selModel.parentElement);
+    return true;
+}
 
 function getSubTotal(){
     if(getCurrentModel() == null) return 0;
@@ -114,6 +126,13 @@ function reset(){
     removeOptions(selSubCat);
     removeOptions(selCat);
     selInit();
+}
+
+function getCurrentModel(){
+    if(selModel.value == 'choose') return null;
+    return getCurrentSubCat().products.filter(obj => {
+        return obj.name == selModel.value;
+    })[0];
 }
 
 function selInit(){
@@ -153,13 +172,6 @@ function getCurrentSubCat(){
     if(selSubCat.value == 'choose') return null;
     return getCurrentCat().subCategories.filter(obj => {
         return obj.name == selSubCat.value;
-    })[0];
-}
-
-function getCurrentModel(){
-    if(selModel.value == 'choose') return null;
-    return getCurrentSubCat().products.filter(obj => {
-        return obj.name == selModel.value;
     })[0];
 }
 

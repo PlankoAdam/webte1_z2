@@ -1,6 +1,6 @@
 import { emptyFieldMessage, setError, setSuccess } from "../util.js";
 
-export {validate};
+export { validate };
 
 const dobInput = document.getElementById('date-of-birth');
 const ageInput = document.getElementById('age');
@@ -24,11 +24,12 @@ function validateDob(){
 
     if(!ageInput.value){
         ageInput.value = getAge(dobVal);
+    }
+    if(ageInput.value == getAge(dobVal)){
         setSuccess(dobInput);
         setSuccess(ageInput);
         return true;
     }
-    validateAge();
     return false;
 }
 

@@ -1,4 +1,4 @@
-export {getSubTotal, reset};
+export { getSubTotal, reset, getSelectedExtras, getOtherOptionText };
 
 const otherCheckboxInput = document.getElementById('opt-other-txtbox');
 const checkboxes = [
@@ -45,6 +45,20 @@ function reset(){
         checkboxes[i].element.checked = false;
     }
     toggleOtherInput();
+}
+
+function getSelectedExtras(){
+    let extras = [];
+    for(let i = 0; i < checkboxes.length; i++){
+        if(checkboxes[i].element.checked){
+            extras.push(checkboxes[i]);
+        }
+    }
+    return extras;
+}
+
+function getOtherOptionText(){
+    return otherCheckboxInput.value;
 }
 
 function checkboxesInit(){

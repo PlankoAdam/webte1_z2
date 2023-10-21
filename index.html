@@ -75,7 +75,9 @@
                         <div class="error-text"></div>
                     </div>
                 </div>
+
                 <div class="form-collumn">
+                    
                     <div>
                         <div class="form-element">
                             <label for="sel-cat">Kategória</label>
@@ -94,11 +96,12 @@
                             <select name="sel-model" id="sel-model">
                                 <option value="choose">Vyberte</option>
                             </select>
+                            <div class="error-text"></div>
                         </div>
                     </div>
 
                     <div class="form-element">
-                        <label>Checkbox</label>
+                        <label>Extra služby</label>
                         <div class="checkbox-item">
                             <input type="checkbox" name="extra" id="opt1">
                             <label for="opt1" id="l-opt1">Option 1</label>
@@ -115,7 +118,7 @@
                             <input type="checkbox" name="extra" id="opt-other">
                             <label for="opt-other" id="l-opt-other">Option other</label>
                         </div>
-                        <input type="text" id="opt-other-txtbox">
+                        <textarea type="text" id="opt-other-txtbox"></textarea>
                     </div>
 
                     <div class="form-element">
@@ -128,9 +131,32 @@
                     <button type="reset">Reset</button>
                 </div>
                 <div class="btn">
-                    <button type="submit">Hotovo</button>
+                    <button id="done-btn">Ďalej</button>
                 </div>
             </div>
+
+            <dialog class="modal" id="modal">
+                <div>
+                    <h2>Prehľad objednávky</h2>
+                    <h3>Vybraný produkt:</h3>
+                    <div class="modal-line">
+                        <p id="selected-product"></p>
+                        <p id="selected-product-price" class="price"></p>
+                    </div>
+                    <h3>Vybrané služby:</h3>
+                    <ul id="selected-extras"></ul>
+                    <div class="modal-line">
+                        <h3>Spolu:</h3>
+                        <h3 id="total-modal" class="price"></h3>
+                    </div>
+                </div>
+                <div class="btn">
+                    <button id="modal-close-btn">Zatvoriť</button>
+                </div>
+                <div class="btn">
+                    <button type="submit" id="modal-submit-btn">Odoslať</button>
+                </div>
+            </dialog>
         </form>
     </div>
 </body>

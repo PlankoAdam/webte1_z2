@@ -209,8 +209,67 @@ input[type="checkbox"] + label{
     align-items: center;
 }
 
+#opt-other-txtbox{
+    resize: vertical;
+}
+
 label a{
     font-style: italic;
     font-size: small;
     color: var(--dark);
+}
+
+#modal{
+    background-color: var(--light);
+    width: min-content;
+    max-width: fit-content;
+    min-width: 25rem;
+    margin: auto;
+    border: 0;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.37);
+    padding: 2rem;
+    font-family: sans-serif;
+    color: var(--vdark);
+}
+
+#modal h2{
+    text-align: center;
+}
+
+#modal h3{
+    margin-top: 1rem;
+}
+
+#modal ul{
+    padding-left: 1rem;
+}
+
+#selected-product{
+    padding-left: 1rem;
+}
+
+#modal::backdrop{
+    background-color: black;
+    opacity: 0.4;
+}
+
+.modal-line{
+    display: flex;
+}
+
+.modal-line p, h3{
+    width: 100%;
+    margin: 0.1em 0 0.1em 0;
+}
+
+.price{
+    max-width: fit-content;
+    align-self: flex-end;
+}
+
+#other-extra-text{
+    word-break: normal;
+    white-space: normal;
+    margin: 0.3rem 0 1rem 0.5rem;
+    font-style: italic;
 }

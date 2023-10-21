@@ -1,6 +1,6 @@
 import { emptyFieldMessage, setError, setSuccess} from "../util.js";
 
-export {validate, reset};
+export { validate, reset };
 
 const genderSelector = document.getElementById('gender-selector');
 const otherGenderInput = document.getElementById('other-gender-input');

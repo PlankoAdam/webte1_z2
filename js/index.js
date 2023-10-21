@@ -10,15 +10,30 @@ import * as cart from "./cart/cart.js";
 import { setDefault } from "./util.js";
 
 const form = document.getElementById('form');
+const doneBtn = document.getElementById('done-btn');
+const modal = document.getElementById('modal');
+const modalCloseBtn = document.getElementById('modal-close-btn');
 
-resetForm();
-
-form.addEventListener('submit', e => {
+modalCloseBtn.addEventListener('click', e => {
     e.preventDefault();
-    sendForm();
+    modal.close();
+    clearModal();
+});
+
+doneBtn.addEventListener('click', e => {
+    e.preventDefault();
+    if(!validateForm()){
+        console.log('invalid form');
+        return;
+    }
+    console.log('Form submitted!');
+    prepareModal();
+    modal.showModal();
 });
 
 form.addEventListener('reset', resetForm);
+
+resetForm();
 
 function resetForm(){
     let formElements = document.getElementsByClassName('form-element');
@@ -32,9 +47,6 @@ function resetForm(){
 }
 
 function sendForm(){
-    if(!validateForm()){
-        return;
-    }
     console.log('Form submitted!');
 }
 
@@ -46,12 +58,56 @@ function validateForm(){
         ageDoB,
         email,
         phone,
-        gender
+        gender,
+        cart
     ];
     for(let i = 0; i < inputs.length; i++){
         if(!inputs[i].validate()){
             isValid = false;
+            console.log(i);
         }
     }
     return isValid;
+}
+
+function prepareModal(){
+    document.getElementById('selected-product').innerText = cart.getSelectedProduct().name;
+    document.getElementById('selected-product-price').innerText = cart.getSelectedProduct().price + '€';
+    const selectedExtrasList = document.getElementById('selected-extras');
+    const selectedExtras = cart.getSelectedExtras();
+    for(let i = 0; i < selectedExtras.length; i++){
+        const li = document.createElement('li');
+        selectedExtrasList.appendChild(li);
+
+        const div = document.createElement('div');
+        div.classList.add('modal-line');
+        li.appendChild(div);
+
+        const name = document.createElement('p');
+        name.innerText = selectedExtras[i].name;
+        div.appendChild(name);
+
+        const price = document.createElement('p');
+        price.innerText = selectedExtras[i].price + '€';
+        price.classList.add('price');
+        div.appendChild(price);
+
+        if(selectedExtras[i].element.id == 'opt-other'){
+            let p = document.createElement('p');
+            p.innerText = cart.getOtherOptionText();
+            p.id = 'other-extra-text';
+            li.appendChild(p);
+        }
+    }
+    document.getElementById('total-modal').innerText = cart.getTotal() + '€';
+}
+
+function clearModal(){
+    document.getElementById('selected-product').innerText = '';
+    document.getElementById('selected-product-price').innerText = '';
+    const selectedExtrasList = document.getElementById('selected-extras');
+    while(selectedExtrasList.firstChild){
+        selectedExtrasList.removeChild(selectedExtrasList.firstChild);
+    }
+    document.getElementById('total-modal').innerText = "0€";
 }

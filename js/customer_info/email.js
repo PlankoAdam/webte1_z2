@@ -1,6 +1,6 @@
 import { emptyFieldMessage, setError, setSuccess} from "../util.js";
 
-export {validate};
+export { validate };
 
 const emailInput = document.getElementById('email');
 
