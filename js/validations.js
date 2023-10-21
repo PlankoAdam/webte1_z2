@@ -79,6 +79,22 @@ function validateEmail(){
     }
 }
 
+function validateGender(){
+    const genderInputs = document.getElementsByName('gender');
+    for(let i = 0; i < genderInputs.length; i++){
+        if(genderInputs[i].checked){
+            if(genderInputs[i].id == 'other-gender' & otherGenderInput.value == ''){
+                setError(genderSelector, emptyFieldMessage);
+                return;
+            }
+            setSuccess(genderSelector);
+            return;
+        }
+    }
+    formIsValid = false;
+    setError(genderSelector, 'Vyberťe jednu možnosť!');
+}
+
 function validateForm(){
     formIsValid = true;
     validateFirstName();
@@ -86,6 +102,7 @@ function validateForm(){
     validateDob();
     validateAge();
     validateEmail();
+    validateGender();
     if(formIsValid){
         sendForm();
     }

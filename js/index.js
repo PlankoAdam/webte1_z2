@@ -11,6 +11,7 @@ const emailInput = document.getElementById('email');
 const fNameLenDisplay = document.getElementById('f-name-len');
 const lNameLenDisplay = document.getElementById('l-name-len');
 
+const genderSelector = document.getElementById('gender-selector');
 const otherGenderInput = document.getElementById('other-gender-input');
 
 const selCat = document.getElementById('sel-cat');
@@ -52,7 +53,7 @@ const emptyFieldMessage = 'Prosím, vyplňte políčko!';
 form.addEventListener('submit', e => {
     e.preventDefault();
     validateForm();
-})
+});
 
 form.addEventListener('reset', e => resetForm());
 

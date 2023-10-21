@@ -150,6 +150,11 @@ input[type="radio"] + label{
     transition: 0.3s;
 }
 
+.success input[type="radio"]{
+    border-color: white !important;
+    transition: 0.3s;
+}
+
 #opt-other-txtbox{
     box-sizing: border-box;
     width: 100%;
