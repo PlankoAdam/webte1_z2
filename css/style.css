@@ -1,3 +1,18 @@
+@font-face {
+    font-family: "roboto";
+    src: url("../fonts/Roboto-Regular.ttf");
+}
+
+@font-face {
+    font-family: "roboto-bold";
+    src: url("../fonts/Roboto-Bold.ttf");
+}
+
+@font-face {
+    font-family: "roboto-italic";
+    src: url("../fonts/Roboto-Italic.ttf");
+}
+
 :root{
     --bg: rgb(23, 46, 61);
     --light: rgb(186, 220, 233);
@@ -65,7 +80,7 @@ body{
 }
 
 .form-element label{
-    font-family: sans-serif;
+    font-family: roboto-bold, sans-serif;
     margin-bottom: 0.1rem;
 }
 
@@ -138,8 +153,7 @@ input[type="radio"] + label{
     background-color: var(--dark);
     border: 0;
     color: white;
-    font-family: monospace;
-    font-weight: bold;
+    font-family: roboto-bold, monospace;
     cursor: pointer;
 }
 
@@ -147,10 +161,6 @@ input[type="radio"] + label{
     background-color: white;
     color: var(--dark);
     transition: 0.3s;
-}
-
-.radio-buttons{
-    font-style: italic;
 }
 
 .error-text{
@@ -214,7 +224,7 @@ input[type="checkbox"] + label{
 }
 
 label a{
-    font-style: italic;
+    font-family: roboto-italic, monospace;
     font-size: small;
     color: var(--dark);
 }
@@ -228,16 +238,18 @@ label a{
     border: 0;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.37);
     padding: 2rem;
-    font-family: sans-serif;
+    font-family: roboto, sans-serif;
     color: var(--vdark);
 }
 
 #modal h2{
     text-align: center;
+    font-family: roboto-bold;
 }
 
 #modal h3{
     margin-top: 1rem;
+    font-family: roboto-bold;
 }
 
 #modal ul{
@@ -271,7 +283,7 @@ label a{
     word-break: normal;
     white-space: normal;
     margin: 0.3rem 0 1rem 0.5rem;
-    font-style: italic;
+    font-family: roboto-italic;
 }
 
 #hidden-input{
