@@ -7,7 +7,7 @@ const totalLabel = document.getElementById('total-label');
 let total = 0;
 
 document.getElementById('sel-model').addEventListener('change', updateTotal);
-let extraOptions = document.getElementsByName("extra")
+let extraOptions = document.getElementsByClassName("extra")
 for(let i = 0; i < extraOptions.length; i++){
     extraOptions[i].addEventListener('change', updateTotal);
 }

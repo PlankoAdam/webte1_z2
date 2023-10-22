@@ -13,6 +13,7 @@ for(let i = 0; i < genderOptions.length; i++) {
 }
 
 function validate(){
+    document.getElementById('other-gender').value = otherGenderInput.value;
     const genderInputs = document.getElementsByName('gender');
     for(let i = 0; i < genderInputs.length; i++){
         if(genderInputs[i].checked){

@@ -10,6 +10,8 @@ import * as cart from "./cart/cart.js";
 import { setDefault } from "./util.js";
 
 const form = document.getElementById('form');
+const showBtn = document.getElementById('show-name-btn');
+const hiddenInput = document.getElementById('hidden-input');
 const doneBtn = document.getElementById('done-btn');
 const modal = document.getElementById('modal');
 const modalCloseBtn = document.getElementById('modal-close-btn');
@@ -31,6 +33,15 @@ doneBtn.addEventListener('click', e => {
     modal.showModal();
 });
 
+showBtn.addEventListener('click', e => {
+    e.preventDefault();
+    if(hiddenInput.style.opacity == 0){
+        hiddenInput.style.opacity = 1;
+    }else{
+        hiddenInput.style.opacity = 0;
+    }
+});
+
 form.addEventListener('reset', resetForm);
 
 resetForm();
@@ -44,10 +55,6 @@ function resetForm(){
     gender.reset();
     fName.reset();
     lName.reset();
-}
-
-function sendForm(){
-    console.log('Form submitted!');
 }
 
 function validateForm(){

@@ -273,3 +273,19 @@ label a{
     margin: 0.3rem 0 1rem 0.5rem;
     font-style: italic;
 }
+
+#hidden-input{
+    opacity: 0;
+    width: 100%;
+}
+
+#hidden-name-element{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: fit-content;
+}
+
+#show-name-btn{
+    width: fit-content;
+}

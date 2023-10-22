@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Audiopolis</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     <div class="form-window">
-        <form id="form" novalidate>
+        <form id="form" action="https://form2mail.iolab.sk/form2mail.php" method="post" enctype="multipart/form-data" novalidate>
+
+            <input type="hidden" name="apikey" value="cb70c19a3d2d9ba16b328d585d583b86">
+        
+            <input type="hidden" name="from" value="xplanko@stuba.sk">
+            <input type="hidden" name="sender" value="Adam Planko">
+            <input type="hidden" name="to" value="feistu01@gmail.com"> 
+            <input type="hidden" name="subject" value="Adam Planko - Formular WEBTE">
+            <input type="hidden" name="redirectOk" value="">
+            <input type="hidden" name="redirectFalse" value="">
+
             <div class="cols">
                 <div class="form-collumn">
 
@@ -38,19 +48,19 @@
 
                     <div class="form-element">
                         <label for="email">E-mail adresa</label>
-                        <input type="email" id="email" name="email">
+                        <input type="email" id="email" name="email" placeholder="john.doe@example.com">
                         <div class="error-text"></div>
                     </div>
 
                     <div class="form-element">
                         <label for="tel">Telefónne číslo</label>
                         <div id="tel">
-                            <select name="sel-country-code" id="sel-country-code">
+                            <select name="tel-country-code" id="sel-country-code">
                                 <option value="+421">🇸🇰 +421</option>
                                 <option value="+420">🇨🇿 +420</option>
                                 <option value="+36">🇭🇺 +36</option>
                             </select>
-                            <input type="text" maxlength="15" id="local-number-input" name="local-number-input" onkeypress="return onlyNumberKey(event)">
+                            <input type="text" maxlength="15" id="local-number-input" name="tel-local-number" onkeypress="return onlyNumberKey(event)">
                         </div>
                         <div class="error-text"></div>
                     </div>
@@ -59,15 +69,15 @@
                         <label for="gender">Pohlavie</label>
                         <div class="radio-buttons" id="gender-selector">
                             <div class="radio-item">
-                                <input type="radio" name="gender" id="male">
+                                <input type="radio" name="gender" id="male" value="male">
                                 <label for="male">Muž</label>
                             </div>
                             <div class="radio-item">
-                                <input type="radio" name="gender" id="female">
+                                <input type="radio" name="gender" id="female" value="female">
                                 <label for="female">Žena</label>
                             </div>
                             <div class="radio-item">
-                                <input type="radio" name="gender" id="other-gender">
+                                <input type="radio" name="gender" id="other-gender" value="other">
                                 <label for="other-gender">Iné</label>
                             </div>
                         </div>
@@ -81,19 +91,19 @@
                     <div>
                         <div class="form-element">
                             <label for="sel-cat">Kategória</label>
-                            <select name="sel-cat" id="sel-cat">
+                            <select name="category" id="sel-cat">
                                 <option value="choose">Vyberte</option>
                             </select>
                         </div>
                         <div class="form-element">
                             <label for="sel-sub-cat">Typ</label>
-                            <select name="sel-sub-cat" id="sel-sub-cat">
+                            <select name="sub-category" id="sel-sub-cat">
                                 <option value="choose">Vyberte</option>
                             </select>
                         </div>
                         <div class="form-element">
                             <label for="sel-model">Model</label>
-                            <select name="sel-model" id="sel-model">
+                            <select name="model" id="sel-model">
                                 <option value="choose">Vyberte</option>
                             </select>
                             <div class="error-text"></div>
@@ -103,19 +113,19 @@
                     <div class="form-element">
                         <label>Extra služby</label>
                         <div class="checkbox-item">
-                            <input type="checkbox" name="extra" id="opt1">
+                            <input type="checkbox" class="extra" id="opt1">
                             <label for="opt1" id="l-opt1">Option 1</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" name="extra" id="opt2">
+                            <input type="checkbox" class="extra" id="opt2">
                             <label for="opt2" id="l-opt2">Option 2</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" name="extra" id="opt3">
+                            <input type="checkbox" class="extra" id="opt3">
                             <label for="opt3" id="l-opt3">Option 3</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" name="extra" id="opt-other">
+                            <input type="checkbox" class="extra" id="opt-other">
                             <label for="opt-other" id="l-opt-other">Option other</label>
                         </div>
                         <textarea type="text" id="opt-other-txtbox"></textarea>
@@ -124,14 +134,23 @@
                     <div class="form-element">
                         <label id="total-label">Total: 0</label>
                     </div>
+
                 </div>
             </div>
+
             <div>
                 <div class="btn">
                     <button type="reset">Reset</button>
                 </div>
                 <div class="btn">
                     <button id="done-btn">Ďalej</button>
+                </div>
+                <hr>
+                <div id="hidden-name-element">
+                    <input type="text" id="hidden-input" name="created-by" value="Adam Planko" readonly>
+                    <div class="btn">
+                        <button id="show-name-btn">Meno</button>
+                    </div>
                 </div>
             </div>
 

@@ -1,5 +1,6 @@
 export { getSubTotal, reset, getSelectedExtras, getOtherOptionText };
 
+const otherCheckbox = document.getElementById('opt-other');
 const otherCheckboxInput = document.getElementById('opt-other-txtbox');
 const checkboxes = [
     {
@@ -28,8 +29,11 @@ const checkboxes = [
     }
 ];
 
-document.getElementById('opt-other').addEventListener('change', toggleOtherInput);
 checkboxesInit();
+otherCheckbox.addEventListener('change', toggleOtherInput);
+otherCheckboxInput.addEventListener('input', () => {
+    otherCheckbox.value = otherCheckboxInput.value;
+});
 
 function getSubTotal(){
     let total = 0;
@@ -40,6 +44,7 @@ function getSubTotal(){
     }
     return total;
 }
+
 function reset(){
     for(let i = 0; i < checkboxes.length; i++){
         checkboxes[i].element.checked = false;
@@ -64,6 +69,7 @@ function getOtherOptionText(){
 function checkboxesInit(){
     for(let i = 0; i < checkboxes.length; i++){
         checkboxes[i].label.innerHTML = checkboxes[i].name;
+        checkboxes[i].element.name = checkboxes[i].name;
     }
 }
 

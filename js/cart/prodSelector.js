@@ -10,11 +10,11 @@ const categories = [
                 name:"Bookshelf",
                 products:[
                     {
-                        name:"asdf",
+                        name:"KEF LS50 Meta",
                         price:100.0
                     },
                     {
-                        name:"sexy narkoman",
+                        name:"Elac Debut B5.2",
                         price:69.0
                     }
                 ]
@@ -23,11 +23,11 @@ const categories = [
                 name:"Standing",
                 products:[
                     {
-                        name:"ganacci",
+                        name:"Q Acoustics 5040",
                         price:420.0
                     },
                     {
-                        name:"salvatore",
+                        name:"Wharfedale Diamond 12.3",
                         price:690.0
                     }
                 ]
@@ -41,11 +41,11 @@ const categories = [
                 name:"Closed-back",
                 products:[
                     {
-                        name:"qwqwert",
+                        name:"Sony MDR-7506",
                         price:100.0
                     },
                     {
-                        name:"DT770 PRO",
+                        name:"Beyerdynamic DT 770 PRO",
                         price:69.0
                     }
                 ]
@@ -54,11 +54,11 @@ const categories = [
                 name:"Open-back",
                 products:[
                     {
-                        name:"HD600",
+                        name:"Sennheiser HD 800 S",
                         price:420.0
                     },
                     {
-                        name:"X2HR",
+                        name:"HiFiMan Edition XS",
                         price:690.0
                     }
                 ]
@@ -72,11 +72,11 @@ const categories = [
                 name:"Wired",
                 products:[
                     {
-                        name:"Moondrop Chu",
+                        name:"Shure Aonic 3",
                         price:100.0
                     },
                     {
-                        name:"Salnotes Zero",
+                        name:"SoundMagic E11C",
                         price:69.0
                     }
                 ]
