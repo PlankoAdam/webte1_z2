@@ -6,9 +6,12 @@ const dobInput = document.getElementById('date-of-birth');
 const ageInput = document.getElementById('age');
 
 dobInput.addEventListener('blur', validateDob);
+dobInput.addEventListener('blur', validateAge);
 dobInput.addEventListener('change', validateDob);
 ageInput.addEventListener('blur', validateAge);
 ageInput.addEventListener('change', validateAge);
+
+dobInit();
 
 function validate(){
     if(validateDob() & validateAge()) return true;
@@ -76,4 +79,9 @@ function getAge(dateString) {
         age--;
     }
     return age;
+}
+
+function dobInit(){
+    let today = new Date().toISOString().split('T')[0];
+    dobInput.setAttribute('max', today);
 }

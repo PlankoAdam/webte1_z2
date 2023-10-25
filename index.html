@@ -53,7 +53,7 @@
                     </div>
 
                     <div class="form-element">
-                        <label for="tel">Telefónne číslo</label>
+                        <label for="local-number-input">Telefónne číslo</label>
                         <div id="tel">
                             <select name="tel-country-code" id="sel-country-code">
                                 <option value="+421">🇸🇰 +421</option>
@@ -66,7 +66,7 @@
                     </div>
 
                     <div class="form-element">
-                        <label for="gender">Pohlavie</label>
+                        <label>Pohlavie</label>
                         <div class="radio-buttons" id="gender-selector">
                             <div class="radio-item">
                                 <input type="radio" name="gender" id="male" value="male">
@@ -128,7 +128,7 @@
                             <input type="checkbox" class="extra" id="opt-other">
                             <label for="opt-other" id="l-opt-other">Option other</label>
                         </div>
-                        <textarea type="text" id="opt-other-txtbox"></textarea>
+                        <textarea id="opt-other-txtbox"></textarea>
                     </div>
 
                     <div class="form-element">
@@ -166,7 +166,7 @@
                     <ul id="selected-extras"></ul>
                     <div class="modal-line">
                         <h3>Spolu:</h3>
-                        <h3 id="total-modal" class="price"></h3>
+                        <h3 id="total-modal" class="price">0</h3>
                     </div>
                 </div>
                 <div class="btn">
@@ -178,14 +178,14 @@
             </dialog>
         </form>
     </div>
+    <script type="module" src="./js/index.js"></script>
+    <script>
+        function onlyNumberKey(evt) {
+        let ASCIICode = (evt.which) ? evt.which : evt.keyCode
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+            return false;
+        return true;
+        }
+    </script>
 </body>
-<script type="module" src="./js/index.js"></script>
-<script>
-    function onlyNumberKey(evt) {
-    let ASCIICode = (evt.which) ? evt.which : evt.keyCode
-    if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
-        return false;
-    return true;
-    }
-</script>
 </html>
